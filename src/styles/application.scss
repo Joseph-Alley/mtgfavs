@@ -1,0 +1,238 @@
+body {
+  background: #eee;
+  margin: 0;
+    
+  #app {
+    max-width: 800px;
+    margin: auto;
+    
+    .tabs-wrap {
+      
+      #tabs-buttons {
+        margin: 0 8px;
+        text-align: center;
+        min-height: 40px;
+        
+        @media (max-width: 600px) {
+          margin-top: 8px;
+        }
+        
+        button {
+          color: darkgray;
+          padding: 6px 20px 11px;
+          border: 2px solid #aeaeae;
+          border-top-width: 0;
+          margin: 0 3px;
+          font-weight: 600;
+          font-size: 16px;
+          display: inline-block;
+          line-height: 16px;
+          transition: all 0.2s ease;
+          cursor: pointer;
+          vertical-align: top;
+          outline: none;
+          
+          &:hover {
+            border-color: #7a7a7a;
+            background-color: #c4c4c4;
+            color: black;
+            padding: 11px 20px;
+          }
+          
+          @media (max-width: 600px) {
+            display: block;
+            width: 100%;
+            padding: 11px 20px 11px;
+            border-top-width: 2px;
+            margin-bottom: 2px;
+          }
+        }
+      }
+      
+      // apply styles to active button
+      &.search-tab-active #search-card-btn,
+      &.gen-booster-active #generate-booster-btn,
+      &.show-favs-active #show-favs-btn {
+            border-color: #7a7a7a;
+            background-color: #c4c4c4;
+            color: black;
+            padding: 11px 20px;
+      }
+      
+      .search-cards, .gen-booster, .favourites { 
+        padding: 10px;
+      
+        h1 {
+          text-align: center
+        }
+
+        form {
+          text-align: center;
+          margin-bottom: 60px;
+
+          input, select {
+            line-height: 19px;
+            padding: 11px 20px;
+            border: 2px solid #aeaeae;
+            margin: 0 3px;
+            font-weight: 600;
+            font-size: 16px;
+            display: inline-block;
+            transition: all 0.2s ease;
+
+            &[type="text"] {
+              &:focus {
+                border-color: #7a7a7a;
+              }
+            }
+            &[type="submit"] {
+              cursor: pointer;
+              background-color: #dddddd;
+
+              &:hover {
+                border-color: #7a7a7a;
+                background-color: #c4c4c4;
+              }
+            }
+          }
+          select {
+            min-width: 404px;
+            box-sizing: border-box;
+          }
+        }
+      }
+      
+      .search-cards, .favourites {
+
+        .results .card-collection .cards-list .mtg-card {
+          padding: 10px 10px 15px;
+          border: 1px solid black;
+          border-top-width: 0;
+          background: lightslategray;
+
+          &:first-child {
+            border-top-width: 1px;
+          }
+          &:nth-child(2n) {
+            background: #607080;
+          }
+
+          .card-name {
+            margin: 0;
+          }
+          .card-type {
+            margin: 0 0 20px 10px;
+          }
+
+          img {
+            display: inline-block;
+            width: 223px;
+            margin-right: 27px;
+            border-radius: 10px;
+
+            @media (max-width: 500px) { 
+              display: block;
+              margin: 0;
+            }
+          }
+          &.Uncommon img {
+            -webkit-box-shadow: 0px 0px 9px 0px rgba(192,192,192,1);
+            -moz-box-shadow: 0px 0px 9px 0px rgba(192,192,192,1);
+            box-shadow: 0px 0px 9px 0px rgba(192,192,192,1);
+          }
+          &.Rare img {
+            -webkit-box-shadow: 0px 0px 9px 0px rgba(218,165,32,1);
+            -moz-box-shadow: 0px 0px 9px 0px rgba(218,165,32,1);
+            box-shadow: 0px 0px 9px 0px rgba(218,165,32,1);
+          }
+          &.Mythic.Rare img {
+            -webkit-box-shadow: 0px 0px 9px 0px rgba(199,0,0,1);
+            -moz-box-shadow: 0px 0px 9px 0px rgba(199,0,0,1);
+            box-shadow: 0px 0px 9px 0px rgba(199,0,0,1);
+          }
+
+          p {
+            display: inline-block;
+            width: calc(100% - 250px);
+            vertical-align: top;
+            font-size: 17px;
+
+            @media (max-width: 500px) { 
+              display: block;
+              width: 100%;
+            }
+
+            br {
+              line-height: 150%;
+            }
+            
+            button {
+              display: inline-block;
+              background-color: #eee;
+              font-size: 16px;
+              font-weight: 600;
+              line-height: 19px;
+              padding: 11px 20px;
+              margin: 10px 0 0;
+              border: 2px solid #000000;
+              cursor: pointer;
+              transition: all 0.2s ease;
+
+              &:hover {
+                background-color: #c4c4c4;
+              }
+            }
+          }
+        }
+      } // end .search-cards & .favourites
+      
+      .gen-booster {
+        .results {
+          text-align: center;
+          
+          h2, h3 {
+            margin: 0;
+          }
+          
+          .cards-list {
+            .mtg-card {
+              width: 195px;
+              height: 271px;
+              display: inline-block;
+              position: relative;
+              
+              &:hover {
+                z-index: 99;
+              }
+              
+              .expand-wrap {
+                display: inline-block;
+                position: absolute;
+                width: 100%;
+                transition: all 0.2s ease;
+                
+                // code used to center div inside possibly-smaller div
+                left: 50%;
+                top: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                
+                &:hover {
+                  // the image goes blurry if we pick an odd number
+                  // I'm not sure why, since the image is naturally 223px
+                  width: 228px; // +4px for padding
+                }
+
+                img {
+                  max-width: calc(100% - 4px);
+                }
+              }
+            }
+          }
+        }
+      } // end .gen-booster
+    }
+  }
+}

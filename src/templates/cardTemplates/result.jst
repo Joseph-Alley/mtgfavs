@@ -1,0 +1,13 @@
+<div class="mtg-card <%= data.rarity %>">
+  <h2 class="card-name"><%= data.name %></h2>
+  <h3 class="card-type"><%= data.type %></h3>
+    
+  <!-- remove whitespace between elements to prevent inline-block adding gaps -->
+  <img  src="<%- data.image %>"><p class="card-description"><%= data.desc %>
+  <br>
+  <% if (data.id !== "") { %>
+    <button class="remove-favourite">Remove Favourite</button>
+  <% } else { %>
+    <button class="mark-favourite">Mark as Favourite</button>
+  <% } %></p>
+</div>
